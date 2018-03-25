@@ -12,4 +12,5 @@ This repository specifies the control protocol implemented by [gex-core](https:/
 
 - [UNIT_DO.md](UNIT_DO.md) - Digital Output
 - [UNIT_DI.md](UNIT_DI.md) - Digital Input
+- [UNIT_NEOPIXEL.md](UNIT_NEOPIXEL.md) - NeoPixel driver
 
