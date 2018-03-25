@@ -14,4 +14,5 @@ This repository specifies the control protocol implemented by [gex-core](https:/
 - [UNIT_DI.md](UNIT_DI.md) - Digital Input
 - [UNIT_NEOPIXEL.md](UNIT_NEOPIXEL.md) - NeoPixel driver
 - [UNIT_SIPO.md](UNIT_SIPO.md) - Multi-cast Shift Register Driver
+- [UNIT_I2C.md](UNIT_I2C.md) - I2C master
 
