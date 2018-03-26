@@ -10,9 +10,7 @@
 ### Direct vs Indirect method
 
 The direct method works well for a wide range of frequencies, from Hz to tens of MHz. For
-very high frequencies, a prescaller can be enabled. This method has a best-case
-resolution of 1 Hz, which could be increased by extending the measurement time, which
-already needs to be long, usually 1 second or more for low frequencies.
+very high frequencies, a prescaller can be enabled. This method has a resolution of 1 Hz. It could be increased by extending the measurement time, usually 1 second.
 
 The indirect method has a sub-Hz resolution and is much faster than the direct method for
 low frequencies. It can be used for signals up to tens of kHz, while the direct method
