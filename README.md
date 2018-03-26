@@ -17,7 +17,7 @@ This repository specifies the control protocol implemented by [gex-core](https:/
 - [UNIT_I2C.md](UNIT_I2C.md) - I2C master
 - [UNIT_SPI.md](UNIT_SPI.md) - SPI master with up to 16 slaves and multicast
 - [UNIT_FCAP.md](UNIT_FCAP.md) - Frequency, pulse length, PWM measurement; Pulse counter
-- UNIT_1WIRE.md - 1-Wire master
+- [UNIT_1WIRE.md](UNIT_1WIRE.md) - 1-Wire master (thermometers, iButton...)
 - UNIT_ADC.md - ADC with raw access, triggering, periodic capture
 - UNIT_DAC.md - DAC with DDS
 - UNIT_PWMDIM.md - Simpel PWM output
