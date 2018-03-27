@@ -3,33 +3,32 @@
 The ADC unit supports instantaneous readout, exponential averaging and isochronous
 sampling of up to 16 channels (+ two channels dedicated to a bandgap reference and the
 internal temperature sensor). The voltage reference may be used to compensate for supply
-voltage variations and achieve higher accuracy.
+voltage variations and thus achieve higher accuracy.
 
-The ADC unit has been tested to work up to 75 kSps with 1 channel on the 48 MHz
+The ADC unit has been tested to work at up to 75 kSps with 1 channel on the 48 MHz
 STM32F072, higher frequencies made the system unstable. This should be possible to fix
 in a later firmware update. When sampling multiple channels, the maximal frequency
 drops as more data needs to be sent through the communication port.
 
-This unit works in a similar fashion to the frequency capture unit, having multiple
-mutually exclusive opmodes.
+This unit has several opmodes. All opmodes use periodic sampling; the frequency
+can be pre-comnfigured or set using a command.
 
-All modes use periodic sampling; the frequency can be pre-comnfigured or set using
-a command.
-
-- direct measurement
+- *direct measurement*
   - immediate read-out of the latest captured sample
   - averaging available for lower frequencies, f < 20 kHz
-- isochronous sampling
+- *isochronous sampling*
   - a unlimited stream of samples (use e.g. for visualisation)
   - block capture of a fixed length
-  - level-trigger started capture with pre-trigger capture (like oscilloscope)
+  - level-triggered capture with a pre-trigger buffer (similar to an oscilloscope)
 
 Please note that the opmodes are mutually exclusive, e.g. it's not possible
 to read a averaged sample while streaming - the command will return a BUSY error.
 
-When a stream / block / trigger capture finishes, the unit returns to periodic sampling and direct read-out is available. This is also available when armed for trigger; trigger is implemented by checking the value of those direct samples.
+When a stream / block / trigger capture finishes, the unit returns to a periodic sampling
+mode and a direct read-out is available. This is also available when armed for a trigger;
+triggering is implemented by checking the value of those direct samples.
 
-Channels must be configured in the unit settings, this is to claim the pins. They can be enabled/disabled using a command later.
+Channels must be configured in the unit settings, this is to claim the pins. They can be enabled/disabled through a command later.
 
 ## Commands
 
@@ -135,4 +134,37 @@ benefits.
 
 ## Events
 
-...
+Data events use a *serial number* field, which is incremented with each message.
+When the PC client receives an event, it checks this field and in case of discontinuity, detects a broken stream and acts accordingly (typically by seinding `ABORT`).
+
+Samples are always interleaved (A0,B0,C0, A1,B1,C1, ...) in the array, ordered from the lowest channel number.
+
+### TRIGGERED (50)
+
+When a triggering condition occurs (or the trigger is forced manually),
+this event is generated. It includes the pre-trigger buffer, if enabled.
+This event is followed by multiple `CAPTURE_*` events with more data.
+
+*Payload:*
+- u32 - pretrigger length
+- u8 - triggering edge (1-falling, 2-rising, 3-forced)
+- u8 - stream serial number
+- u16[] - the pre-trigger buffer
+
+### CAPTURE_MORE (51)
+
+A chunk of a stream that's expected to be followed by one or more chunks.
+This event is used for all capture modes. All messages in a stream use the same
+Frame ID, either generated for the first message (trigger, forced trigger), or taken
+from the request (in the case of a stream or a block capture).
+
+*Payload:*
+- u8 - stream serial number
+- u16[] - the samples buffer
+
+### CAPTURE_DONE (52)
+
+Indicates the stream has ended.
+
+If a payload is present (the last chunk), it has the same format as the
+`CAPTURE_MORE` payload.
