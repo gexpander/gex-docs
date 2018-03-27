@@ -19,7 +19,7 @@ This repository specifies the control protocol implemented by [gex-core](https:/
 - [UNIT_FCAP.md](UNIT_FCAP.md) - Frequency, pulse length, PWM measurement; Pulse counter
 - [UNIT_1WIRE.md](UNIT_1WIRE.md) - 1-Wire master (thermometers, iButton...)
 - [UNIT_ADC.md](UNIT_ADC.md) - ADC with raw access, triggering, periodic capture
-- UNIT_DAC.md - DAC with DDS
+- [UNIT_DAC.md](UNIT_DAC.md) - DAC with DDS
 - UNIT_PWMDIM.md - Simple PWM output
 - UNIT_TOUCH.md - Touch sense
 - UNIT_USART.md - UART/USART/RS485
