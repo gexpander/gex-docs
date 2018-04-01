@@ -46,6 +46,24 @@ float overhead.
 *Response:*
 - float32[] - values for enabled channels, ascending order
 
+### READ_CAL_CONSTANTS (2)
+Read calibration constants for the internal voltage reference and the temperature sensor.
+See the reference manual for conversion formulas and other details (RM0091, chapter ADC).
+
+Those constants are stored in ROM after factory testing.
+
+*NOTE:* The given tolerances are valid for STM32F072
+
+*Response:*
+- u16 - VREFINT_CAL - ADC raw value for VREFINT, 30°C ambient
+- u16 - VREFINT_CAL_VADCREF - Analog reference voltage during VREFINT calibration (mV), ±10mV - *always 3300*
+
+- u16 - TSENSE_CAL1 - ADC raw value in point 1
+- u16 - TSENSE_CAL2 - ADC raw value in point 2
+- u8 - TSENSE_CAL1_TEMP - Temperature for point 1 (Celsius), ±5°C - *always 30*
+- u8 - TSENSE_CAL2_TEMP - Temperature for point 2 (Celsius), ±5°C - *always 110*
+- u16 - TSENSE_CAL_VADCREF - Analog reference voltage during TSENSE calibration (mV), ±10mV - *always 3300*
+
 ### GET_ENABLED_CHANNELS (10)
 Get numbers of all enabled channels.
 
