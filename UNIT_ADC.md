@@ -74,7 +74,8 @@ Get numbers of all enabled channels.
 Get the current sample rate in Hz
 
 *Response:*
-- u32 - sample rate
+- u32 - sample rate as requested
+- float - real sample rate (some frequencies may not be achieved exactly due to hardware limitations)
 
 ### SETUP_TRIGGER (20)
 Configure the trigger level and other parameters.
