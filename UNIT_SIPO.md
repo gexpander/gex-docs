@@ -13,7 +13,7 @@ The `DIRECT_*` commands are mostly meant for debugging purposes when trying to c
 
 ## Commands
 
-### WRITE (0x00)
+### WRITE (0)
 
 Sends data to the shift registers.
 
@@ -28,22 +28,22 @@ control or extra LEDs.
 - (u8 array) x num_outputs
   - must be a multiple of the outputs count (if 1, simply the output data)
 
-### DIRECT_DATA (0x01)
+### DIRECT_DATA (1)
 
 Direct write to the data pins, without any pulse.
 
 *Request:*
 - u16 - data to output, packed
 
-### DIRECT_CLEAR (0x02)
+### DIRECT_CLEAR (2)
 
 Pulse the *Clear* output.
 
-### DIRECT_SHIFT (0x03)
+### DIRECT_SHIFT (3)
 
 Pulse the *Shift* output.
 
-### DIRECT_STORE (0x04)
+### DIRECT_STORE (4)
 
 Pulse the *Store* output.
 

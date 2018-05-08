@@ -10,7 +10,7 @@ connected through protection resistors to prevent a short circuit on signal coll
 
 ## Commands
 
-### QUERY (0x00)
+### QUERY (0)
 
 Write and read some bytes.
 
@@ -29,7 +29,7 @@ bytes equal to the number of written bytes.
 *Response:*
 - u8[] - received bytes
 
-### MULTICAST (0x01)
+### MULTICAST (1)
 
 *Request:*
 - u16 - slaves (packed)

@@ -11,31 +11,31 @@ the block of pins easier, e.g. when using them to drive a parallel bus. For sing
 
 ## Commands
 
-### WRITE (0x00)
+### WRITE (0)
 Write a value to all defined pins.
 
 *Request:*
 - u16 - new value (packed)
 
-### SET (0x01)
+### SET (1)
 Set pins high
 
 *Request:*
 - u16 - pins to set high (packed)
 
-### CLEAR (0x02)
+### CLEAR (2)
 Set pins low
 
 *Request:*
 - u16 - pins to set low (packed)
 
-### TOGGLE (0x03)
+### TOGGLE (3)
 Toggle selected pins (high - low)
 
 *Request:*
 - u16 - pins to toggle (packed)
 
-### PULSE (0x04)
+### PULSE (4)
 Send a pulse.
 
 The start will be aligned to 1 us or 1 ms (based on pulse length) of the internal timebase to ensure the highest length precision. This alignment reduces jitter in the pulse duration. A jitter of the pulse start time is less significant, as there's already some unpredictable delay caused by the USB connection and the PC OS scheduler.

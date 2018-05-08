@@ -1,6 +1,6 @@
 # TOUCH
 
-Access to the hardware touch sensing controller. 
+Access to the hardware touch sensing controller.
 Can be used to create capacitive touch interfaces or for rough capacitance measurement (e.g. water level in a bottle, or proximity sensing).
 
 Button mode is implemented for simple threshold checking with hystheresis.
@@ -8,7 +8,7 @@ Button mode is implemented for simple threshold checking with hystheresis.
 
 ## Commands
 
-### READ (0x00)
+### READ (0)
 
 Read the raw touch pad values (lower indicates higher capacitance).
 Values are ordered by group and channel.
@@ -16,19 +16,19 @@ Values are ordered by group and channel.
 *Response:*
 - u16[] - values
 
-### SET_BIN_THR (0x01)
+### SET_BIN_THR (1)
 
 Set button mode thresholds. Value 0 = button mode disabled fro the pad.
 
 *Request:*
 - u16[] - thresholds
 
-### DISABLE_ALL_REPORTS (0x02)
+### DISABLE_ALL_REPORTS (2)
 
 Set thresholds to 0, disabling the button mode for all pads.
 
 
-### SET_DEBOUNCE_TIME (0x03)
+### SET_DEBOUNCE_TIME (3)
 
 Set debounce time for the button mode (replaces the value from unit settings)
 
@@ -36,7 +36,7 @@ Set debounce time for the button mode (replaces the value from unit settings)
 - u16 - debounce time milliseconds
 
 
-### SET_HYSTERESIS (0x04)
+### SET_HYSTERESIS (4)
 
 Set hysteresis (replaces the default value from settings)
 
@@ -48,7 +48,7 @@ drops)
 - u16 - hystheresis
 
 
-### GET_CH_COUNT (0x0A)
+### GET_CH_COUNT (10)
 
 Get the number of enabled channels
 
