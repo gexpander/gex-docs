@@ -17,7 +17,17 @@
 *Response:*
 - u8[] - received bytes
 
-### READ_REG (0x02)
+### WRITE_REG (0x02)
+
+Write a register; first writes the register number, then (in the same transaction)
+the data. If the device supports it, can write multiple registers at once.
+
+*Request:*
+- u16 - address
+- u8 - register number
+- u8[] - bytes to write
+
+### READ_REG (0x03)
 
 Read a register value. First writes the register number, then reads a number of bytes.
 For devices implementing auto-increment, the register width field can be used to read
@@ -31,15 +41,6 @@ multiple registers at once.
 *Response:*
 - u8[] - received bytes
 
-### WRITE_REG (0x03)
-
-Write a register; first writes the register number, then (in the same transaction)
-the data. If the device supports it, can write multiple registers at once.
-
-*Request:*
-- u16 - address
-- u8 - register number
-- u8[] - bytes to write
 
 ## Events
 
